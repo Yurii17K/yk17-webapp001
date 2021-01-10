@@ -3,9 +3,11 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Calendar;
 import java.util.Enumeration;
+import java.util.GregorianCalendar;
 
-@WebServlet(name = "CheckBox", value = "/CheckBox")
+@WebServlet(name = "AllForm", value = "/AllForm")
 public class AllForm extends HttpServlet {
 
     @Override
@@ -14,48 +16,32 @@ public class AllForm extends HttpServlet {
         // Set response content type
         response.setContentType("text/html");
 
+        // Get current time
+        Calendar calendar = new GregorianCalendar();
+        String am_pm;
+        int hour = calendar.get(Calendar.HOUR);
+        int minute = calendar.get(Calendar.MINUTE);
+        int second = calendar.get(Calendar.SECOND);
+
+        if(calendar.get(Calendar.AM_PM) == 0)
+            am_pm = "AM";
+        else
+            am_pm = "PM";
+
+        String CT = hour+":"+ minute +":"+ second +" "+ am_pm;
+
         PrintWriter out = response.getWriter();
-        String title = "Reading All Form Parameters";
+        String title = "Auto Refresh Header Setting";
         String docType =
                 "<!doctype html public \"-//w3c//dtd html 4.0 " + "transitional//en\">\n";
 
         out.println(docType +
-                        "<html>\n" +
-                        "<head><title>" + title + "</title></head>\n" +
-                        "<body bgcolor = \"#f0f0f0\">\n" +
-                        "<h1 align = \"center\">" + title + "</h1>\n" +
-                        "<table width = \"100%\" border = \"1\" align = \"center\">\n" +
-                        "<tr bgcolor = \"#949494\">\n" +
-                        "<th>Param Name</th>" +
-                "<th>Param Value(s)</th>\n"+
-                        "</tr>\n"
+                "<html>\n" +
+                "<head><title>" + title + "</title></head>\n"+
+                "<body bgcolor = \"#f0f0f0\">\n" +
+                "<h1 align = \"center\">" + title + "</h1>\n" +
+                "<p>Current Time is: " + CT + "</p>\n"
         );
-
-        Enumeration paramNames = request.getHeaderNames();
-
-        while(paramNames.hasMoreElements()) {
-            String paramName = (String)paramNames.nextElement();
-            out.print("<tr><td>" + paramName + "</td>\n<td>");
-            String[] paramValues = request.getParameterValues(paramName);
-
-            // Read single valued data
-            if (paramValues.length == 1) {
-                String paramValue = paramValues[0];
-                if (paramValue.length() == 0)
-                    out.println("<i>No Value</i>");
-                else
-                    out.println(paramValue);
-            } else {
-                // Read multiple valued data
-                out.println("<ul>");
-
-                for (String paramValue : paramValues) {
-                    out.println("<li>" + paramValue);
-                }
-                out.println("</ul>");
-            }
-        }
-        out.println("</tr>\n</table>\n</body></html>");
     }
 
     @Override
