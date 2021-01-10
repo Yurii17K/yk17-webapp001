@@ -14,6 +14,21 @@
         <servlet-class>ErrorHandler</servlet-class>
     </servlet>
 
+    <servlet>
+        <servlet-name>ReadCookies</servlet-name>
+        <servlet-class>ReadCookies</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>DeleteCookies</servlet-name>
+        <servlet-class>DeleteCookies</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>SessionTrack</servlet-name>
+        <servlet-class>SessionTrack</servlet-class>
+    </servlet>
+
     <!-- servlet mappings -->
     <servlet-mapping>
         <servlet-name>AllForm</servlet-name>
@@ -24,6 +39,22 @@
         <servlet-name>ErrorHandler</servlet-name>
         <url-pattern>/ErrorHandler</url-pattern>
     </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>ReadCookies</servlet-name>
+        <url-pattern>/ReadCookies</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>DeleteCookies </servlet-name>
+        <url-pattern>/DeleteCookies</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>SessionTrack </servlet-name>
+        <url-pattern>/SessionTrack</url-pattern>
+    </servlet-mapping>
+
 
 
     <filter>
