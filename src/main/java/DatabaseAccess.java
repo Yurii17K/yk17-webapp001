@@ -31,10 +31,8 @@ public class DatabaseAccess extends HttpServlet {
                 "<head><title>" + title + "</title></head>\n" +
                 "<body bgcolor = \"#f0f0f0\">\n" +
                 "<h1 align = \"center\">" + title + "</h1>\n" +
-                        "<table width = \"100%\" border = \"1\" align = \"center\">\n" +
+                        "<table width = \"55%\" border = \"1\" align = \"center\">\n" +
                         "<tr bgcolor = \"#949494\">\n" +
-                        "<th>Param Name</th>" +
-                "<th>Param Value(s)</th>\n"+
                         "</tr>\n");
 
         try {
@@ -51,16 +49,20 @@ public class DatabaseAccess extends HttpServlet {
             ResultSet rs = stmt.executeQuery(sql);
 
             // Extract data from result set
+            out.println("<tr><th>elixir</th>");
+            out.println("<th>duration</th>");
+            out.println("<th>doses</th></tr>");
+
             while(rs.next()){
                 //Retrieve by column name
-                String first = rs.getString("elixir");
-                int age = rs.getInt("duration");
-                int id  = rs.getInt("doses");
+                String elixir = rs.getString("elixir");
+                int duration = rs.getInt("duration");
+                int doses  = rs.getInt("doses");
 
                 //Display values
-                out.println("<tr><td>" + id + "</td>");
-                out.println("<td>" + age + "</td>");
-                out.println("<td>" + first + "</td>");
+                out.println("<tr><td>" + elixir + "</td>");
+                out.println("<td>" + duration + "</td>");
+                out.println("<td>" + doses + "</td>");
             }
             out.println("</tr>\n</table>\n</body></html>");
 
