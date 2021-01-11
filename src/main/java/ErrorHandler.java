@@ -43,16 +43,20 @@ public class ErrorHandler extends HttpServlet {
         if (throwable == null && statusCode == null) {
             out.println("<h2>Error information is missing</h2>");
             out.println("Please return to the <a href=\"" +
-                    response.encodeURL("http://localhost:8080/") +
+                    response.encodeURL("http://localhost:4232/") +
                     "\">Home Page</a>.");
         } else if (statusCode != null) {
-            out.println("The status code : " + statusCode);
+            out.println("The status code : " + statusCode + "</br>");
+            out.println("Please return to the <a href=\"" +
+                    response.encodeURL("http://localhost:4232/webapp001_war") +
+                    "\">Home Page</a>.");
         } else {
             out.println("<h2>Error information</h2>");
             out.println("Servlet Name : " + servletName + "</br></br>");
             out.println("Exception Type : " + throwable.getClass( ).getName( ) + "</br></br>");
             out.println("The request URI: " + requestUri + "<br><br>");
             out.println("The exception message: " + throwable.getMessage( ));
+
         }
         out.println("</body>");
         out.println("</html>");

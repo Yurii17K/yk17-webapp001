@@ -1,12 +1,17 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
+<head>
+    <title>File Uploading Form</title>
+</head>
+
 <body>
-<form action = "AllForm" method = "POST">
-    First Name: <input type = "text" name = "first_name">
+<h3>File Upload:</h3>
+Select a file to upload: <br />
+<form action = "UploadServlet" method = "post" enctype = "multipart/form-data">
+    <input type = "file" name = "file" size = "50" />
     <br />
-    Last Name: <input type = "text" name = "last_name" />
-    <input type = "submit" value = "Submit" />
+    <input type = "submit" value = "Upload File" />
 </form>
 </body>
 </html>
