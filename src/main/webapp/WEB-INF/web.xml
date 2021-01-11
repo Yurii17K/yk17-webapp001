@@ -5,8 +5,8 @@
          version="4.0">
 
     <servlet>
-        <servlet-name>AllForm</servlet-name>
-        <servlet-class>AllForm</servlet-class>
+        <servlet-name>Cookies</servlet-name>
+        <servlet-class>Cookies</servlet-class>
     </servlet>
 
     <servlet>
@@ -29,10 +29,15 @@
         <servlet-class>SessionTrack</servlet-class>
     </servlet>
 
+    <servlet>
+        <servlet-name>DatabaseAccess</servlet-name>
+        <servlet-class>DatabaseAccess</servlet-class>
+    </servlet>
+
     <!-- servlet mappings -->
     <servlet-mapping>
-        <servlet-name>AllForm</servlet-name>
-        <url-pattern>/AllForm</url-pattern>
+        <servlet-name>Cookies</servlet-name>
+        <url-pattern>/Cookies</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>
@@ -46,15 +51,19 @@
     </servlet-mapping>
 
     <servlet-mapping>
-        <servlet-name>DeleteCookies </servlet-name>
+        <servlet-name>DeleteCookies</servlet-name>
         <url-pattern>/DeleteCookies</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>
-        <servlet-name>SessionTrack </servlet-name>
+        <servlet-name>SessionTrack</servlet-name>
         <url-pattern>/SessionTrack</url-pattern>
     </servlet-mapping>
 
+    <servlet-mapping>
+        <servlet-name>DatabaseAccess</servlet-name>
+        <url-pattern>/DatabaseAccess</url-pattern>
+    </servlet-mapping>
 
 
     <filter>

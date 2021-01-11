@@ -7,8 +7,8 @@ import java.util.Calendar;
 import java.util.Enumeration;
 import java.util.GregorianCalendar;
 
-@WebServlet(name = "AllForm", value = "/AllForm")
-public class AllForm extends HttpServlet {
+@WebServlet(name = "Cookies", value = "/Cookies")
+public class Cookies extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
