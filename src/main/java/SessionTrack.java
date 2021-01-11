@@ -7,9 +7,11 @@ import java.util.Date;
 
 @WebServlet(name = "SessionTrack ", value = "/SessionTrack ")
 public class SessionTrack extends HttpServlet {
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-// Create a session object if it is already not  created.
+
+        // Create a session object if it is already not  created.
         HttpSession session = request.getSession(true);
 
         // Get session creation time.
@@ -19,21 +21,24 @@ public class SessionTrack extends HttpServlet {
         Date lastAccessTime = new Date(session.getLastAccessedTime());
 
         String title = "Welcome Back to my website";
-        Integer visitCount = new Integer(0);
+        Integer visitCount = 0;
         String visitCountKey = new String("visitCount");
         String userIDKey = new String("userID");
-        String userID = new String("ABCD");
+        Integer userID = 1;
 
         // Check if this is new comer on your web page.
         if (session.isNew()) {
             title = "Welcome to my website";
-            session.setAttribute(userIDKey, userID);
+            session.setAttribute(userIDKey, userID + 1);
         } else {
             visitCount = (Integer)session.getAttribute(visitCountKey);
             visitCount = visitCount + 1;
-            userID = (String)session.getAttribute(userIDKey);
+            userID = (Integer) session.getAttribute(userIDKey);
         }
         session.setAttribute(visitCountKey,  visitCount);
+
+        // Set refresh, autoload time as 5 seconds
+        response.setIntHeader("Refresh", 5);
 
         // Set response content type
         response.setContentType("text/html");

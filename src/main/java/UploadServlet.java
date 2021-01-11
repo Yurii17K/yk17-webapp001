@@ -27,6 +27,12 @@ public class UploadServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        throw new ServletException("GET method used with " +
+                getClass( ).getName( )+": POST method required.");
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         // Check that we have a file upload request
         isMultipart = ServletFileUpload.isMultipartContent(request);
@@ -39,10 +45,15 @@ public class UploadServlet extends HttpServlet {
             out.println("<title>Servlet upload</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<p>No file uploaded</p>");
+            out.println("No file uploaded<br>");
+            out.println("Please return to the <a href=\"" +
+                    response.encodeURL("http://localhost:4232/webapp001_war") +
+                    "\">Home Page</a>.");
             out.println("</body>");
             out.println("</html>");
             return;
+
+
         }
 
         DiskFileItemFactory factory = new DiskFileItemFactory();
@@ -90,6 +101,9 @@ public class UploadServlet extends HttpServlet {
                     }
                     fi.write( file ) ;
                     out.println("Uploaded Filename: " + fileName + "<br>");
+                    out.println("Please return to the <a href=\"" +
+                            response.encodeURL("http://localhost:4232/webapp001_war") +
+                            "\">Home Page</a>.");
                 }
             }
             out.println("</body>");
@@ -97,11 +111,5 @@ public class UploadServlet extends HttpServlet {
         } catch(Exception ex) {
             System.out.println(ex);
         }
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        throw new ServletException("GET method used with " +
-                getClass( ).getName( )+": POST method required.");
     }
 }
