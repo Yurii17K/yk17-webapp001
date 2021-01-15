@@ -1,22 +1,19 @@
+import org.hibernate.*;
+
+
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.*;
+import java.util.Iterator;
+import java.util.List;
 
 @WebServlet(name = "DatabaseAccess", value = "/DatabaseAccess")
 public class DatabaseAccess extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        // JDBC driver name and database URL
-        final String JDBC_DRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-        final String DB_URL="jdbc:sqlserver://localhost:4032;Database=witcher";
-
-        // Database credentials
-        final String USER = "sa";
-        final String PASS = "1961";
 
         // Set response content type
         response.setContentType("text/html");
@@ -35,47 +32,7 @@ public class DatabaseAccess extends HttpServlet {
                         "<tr bgcolor = \"#949494\">\n" +
                         "</tr>\n");
 
-        try {
-            // Register JDBC driver
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 
-            // Open a connection
-            Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
-
-            // Execute SQL query
-            Statement stmt = conn.createStatement();
-            String sql;
-            sql = "SELECT elixir, duration, doses FROM Elixirs";
-            ResultSet rs = stmt.executeQuery(sql);
-
-            // Extract data from result set
-            out.println("<tr><th>elixir</th>");
-            out.println("<th>duration</th>");
-            out.println("<th>doses</th></tr>");
-
-            while(rs.next()){
-                //Retrieve by column name
-                String elixir = rs.getString("elixir");
-                int duration = rs.getInt("duration");
-                int doses  = rs.getInt("doses");
-
-                //Display values
-                out.println("<tr><td>" + elixir + "</td>");
-                out.println("<td>" + duration + "</td>");
-                out.println("<td>" + doses + "</td>");
-            }
-            out.println("</tr>\n</table>\n</body></html>");
-
-
-            // Clean-up environment
-            rs.close();
-            stmt.close();
-            conn.close();
-        } //Handle errors for Class.forName
-        catch (ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
-        }
-        //end try
     }
 
     @Override

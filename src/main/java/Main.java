@@ -1,6 +1,13 @@
 public class Main {
+
+
     public static void main(String[] args) {
-//        DatabaseAccess da = new DatabaseAccess();
-//        da.doGet();
+
+
+        Manager EM = new Manager();
+
+        EM.addElixir("test", 1234);
+
+
     }
 }
