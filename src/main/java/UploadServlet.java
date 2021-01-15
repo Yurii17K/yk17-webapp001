@@ -7,6 +7,7 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Iterator;
 import java.util.List;
 
@@ -37,7 +38,7 @@ public class UploadServlet extends HttpServlet {
         // Check that we have a file upload request
         isMultipart = ServletFileUpload.isMultipartContent(request);
         response.setContentType("text/html");
-        java.io.PrintWriter out = response.getWriter( );
+        PrintWriter out = response.getWriter( );
 
         if( !isMultipart ) {
             out.println("<html>");
