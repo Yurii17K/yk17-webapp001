@@ -15,6 +15,11 @@ public class DatabaseAccess extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        Manager ME = new Manager();
+
+        // Set refresh, autoload time as 5 seconds
+        response.setIntHeader("Refresh", 5);
+
         // Set response content type
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
@@ -26,11 +31,9 @@ public class DatabaseAccess extends HttpServlet {
         out.println(docType +
                 "<html>\n" +
                 "<head><title>" + title + "</title></head>\n" +
-                "<body bgcolor = \"#f0f0f0\">\n" +
-                "<h1 align = \"center\">" + title + "</h1>\n" +
-                        "<table width = \"55%\" border = \"1\" align = \"center\">\n" +
-                        "<tr bgcolor = \"#949494\">\n" +
-                        "</tr>\n");
+                "<body bgcolor = \"#f0f0f0\">\n");
+        out.println("<h1 align = \"center\"> Number of meals in 'Meals' table: " + ME.listMeals() + "</h1>\n");
+        out.println("</body></html>");
 
 
     }

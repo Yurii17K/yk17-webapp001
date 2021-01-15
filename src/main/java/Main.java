@@ -6,7 +6,7 @@ public class Main {
 
         Manager EM = new Manager();
 
-        EM.addElixir("test", 1234);
+        EM.listMeals();
 
 
     }
