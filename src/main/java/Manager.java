@@ -75,6 +75,7 @@ public class Manager extends HttpServlet {
 
             Meals meal = getMealByName(mealName);
 
+            out.println("Meal " + mealName + " added<br>");
             out.println(tableInitializing);
 
             //Display values
