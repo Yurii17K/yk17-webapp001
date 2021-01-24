@@ -17,6 +17,7 @@ public class Manager extends HttpServlet {
 
     private Manager user;
     private String tableInitializing;
+    private Meals meal;
 
     @Override
     public void init(ServletConfig config) throws ServletException {
@@ -55,15 +56,10 @@ public class Manager extends HttpServlet {
 
                 user.updateMeal(mealID, mealPrice);
 
-                Meals meal = getMealById(mealID);
+                meal = getMealById(mealID);
 
                 out.println("Meal " + mealID + " updated<br>");
                 out.println(tableInitializing);
-
-                //Display values
-                out.println("<tr><td>" + meal.getm_id() + "</td>");
-                out.println("<td>" + meal.getmeal() + "</td>");
-                out.println("<td>" + meal.getprice() + "</td>");
         }
 
         //Adding a meal
@@ -73,34 +69,29 @@ public class Manager extends HttpServlet {
 
             user.addMeal(mealName, mealPrice);
 
-            Meals meal = getMealByName(mealName);
+            meal = getMealByName(mealName);
 
             out.println("Meal " + mealName + " added<br>");
             out.println(tableInitializing);
-
-            //Display values
-            out.println("<tr><td>" + meal.getm_id() + "</td>");
-            out.println("<td>" + meal.getmeal() + "</td>");
-            out.println("<td>" + meal.getprice() + "</td>");
         }
 
         //Deleting a meal
         if (request.getParameter("meal_ID") != null) {
             Integer mealID = Integer.valueOf(request.getParameter("meal_ID"));
 
-                Meals meal = getMealById(mealID);
+                meal = getMealById(mealID);
 
                 user.deleteMeal(mealID);
 
                 out.println("Meal #" + mealID + " deleted<br>");
                 out.println(tableInitializing);
-
-                //Display values
-                out.println("<tr><td>" + meal.getm_id() + "</td>");
-                out.println("<td>" + meal.getmeal() + "</td>");
-                out.println("<td>" + meal.getprice() + "</td>");
         }
 
+
+        //Display values
+        out.println("<tr><td>" + meal.getm_id() + "</td>");
+        out.println("<td>" + meal.getmeal() + "</td>");
+        out.println("<td>" + meal.getprice() + "</td>");
 
         //End of HTML
         out.println("</tr>\n</table>\n");
@@ -138,7 +129,7 @@ public class Manager extends HttpServlet {
     }
 
     public void updateMeal (Integer mealID, int newPrice) {
-        if (mealID <= user.listMeals() && mealID > 0) {
+       // if (mealID <= user.listMeals() && mealID > 0) {
             Session session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
 
@@ -148,11 +139,11 @@ public class Manager extends HttpServlet {
             session.update(meal);
             session.getTransaction().commit();
             session.close();
-        }
+        //}
     }
 
     public void deleteMeal (Integer mealID) {
-        if (mealID <= user.listMeals() && mealID > 0) {
+        //if (mealID <= user.listMeals() && mealID > 0) {
             Session session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
 
@@ -161,7 +152,7 @@ public class Manager extends HttpServlet {
 
             session.getTransaction().commit();
             session.close();
-        }
+       // }
     }
 
     public void addMeal (String mealName, int mealPrice){

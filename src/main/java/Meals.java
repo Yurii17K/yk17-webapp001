@@ -9,8 +9,9 @@ import java.sql.*;
 @Table(name = "Meals")
 public class Meals {
 
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     @Column(name = "m_id")
     private int m_id;
 

@@ -22,16 +22,20 @@ public class SessionTrack extends HttpServlet {
 
         String title = "Welcome Back to my website";
         Integer visitCount = 0;
+        Integer userID = 0;
         String visitCountKey = new String("visitCount");
         String userIDKey = new String("userID");
-        Integer userID = 1;
 
         // Check if this is new comer on your web page.
         if (session.isNew()) {
             title = "Welcome to my website";
-            session.setAttribute(userIDKey, userID + 1);
+            userID += 1;
+            session.setAttribute(userIDKey, userID);
         } else {
             visitCount = (Integer)session.getAttribute(visitCountKey);
+//            if (visitCount == null) {
+//                visitCount = 0;
+//            }
             visitCount = visitCount + 1;
             userID = (Integer) session.getAttribute(userIDKey);
         }

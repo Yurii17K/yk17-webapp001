@@ -2,42 +2,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>File Uploading Form</title>
+    <title>Welcome</title>
+    <link rel="stylesheet" type="text/css" href="index.css">
 </head>
 
 <body>
-<h3>File Upload:</h3>
-Select a file to upload: <br>
-<form action = "UploadServlet" method = "post" enctype = "multipart/form-data">
-    <input type = "file" name = "file" size = "50" />
-    <br />
-    <input type = "submit" value = "Upload File" />
-</form>
 
-<h3>Add an element to Meals table:</h3>
-Provide meal and price: <br>
-<form action = "Manager" method = "POST">
-    Meal: <input type = "text" name = "meal_name" id = "meal_name">
-    <br />
-    Price: <input type = "text" name = "meal_price" id = "meal_price"/>
-    <input type = "submit" value = "Submit" />
-</form>
+<div class="navigation">
+    <ul>
+        <li><a href="file_upoad.jsp">FileUpload</a></li>
+        <li><a href="db_actions.jsp">DBActions</a></li>
 
-<h3>Remove an element from Meals table:</h3>
-Provide ID: <br>
-<form action = "Manager" method = "POST">
-    ID: <input type = "text" name = "meal_ID" id = "meal_ID"/>
-    <input type = "submit" value = "Submit" />
-</form>
+        <li><a href="${pageContext.request.contextPath}/DatabaseAccess">DatabaseAccess</a></li>
+        <li><a href="${pageContext.request.contextPath}/SessionTrack">SessionTrack</a></li>
+        <li><a href="${pageContext.request.contextPath}/Cookies">Cookies</a></li>
+        <li><a href="${pageContext.request.contextPath}/ReadCookies">ReadCookies</a></li>
+        <li><a href="${pageContext.request.contextPath}/DeleteCookies">DeleteCookies</a></li>
+        <li><a href="${pageContext.request.contextPath}/PageRedirect">PageRedirect</a></li>
+    </ul>
+</div>
 
-<h3>Update an element from Meals table:</h3>
-Provide ID amd new price: <br>
-<form action = "Manager" method = "POST">
-    ID: <input type = "text" name = "meal_ID_2" >
-    <br />
-    Price: <input type = "text" name = "meal_price_2"/>
-    <input type = "submit" value = "Submit" />
-</form>
+
+
 
 
 </body>
