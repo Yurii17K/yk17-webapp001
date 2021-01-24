@@ -18,6 +18,12 @@
 
     <dependencies>
 
+        <dependency>
+            <groupId>com.heroku</groupId>
+            <artifactId>webapp-runner</artifactId>
+            <version>8.5.51.0</version>
+        </dependency>
+
         <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
         <dependency>
             <groupId>org.hibernate</groupId>
