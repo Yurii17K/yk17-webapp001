@@ -1,0 +1,46 @@
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+.navigation {
+    /*float: left;*/
+    /* margin-left: 40px;*/
+    border: black;
+    border-width: 0 0 1px 0;
+    border-style: solid;
+
+}
+
+.file, .forms{
+    margin: auto;
+    width: 50%;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: white;  /* fallback for old browsers */
+
+
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+    background-color: whitesmoke;
+}
+
