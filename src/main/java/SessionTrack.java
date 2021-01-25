@@ -29,8 +29,7 @@ public class SessionTrack extends HttpServlet {
         // Check if this is new comer on your web page.
         if (session.isNew()) {
             title = "Welcome to my website";
-            userID += 1;
-            session.setAttribute(userIDKey, userID);
+            session.setAttribute(userIDKey, userID + 1);
         } else {
             visitCount = (Integer)session.getAttribute(visitCountKey);
             if (visitCount == null) {
