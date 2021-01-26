@@ -88,10 +88,13 @@ public class SessionTrack extends HttpServlet {
                 "  <td>Number of visits</td>\n" +
                 "  <td>" + visitCount + "</td>" +
                 "</tr>\n" +
-                "</table>\n" +
-                "</body>" +
-                "</html>"
-      );
+                "</table>\n");
+                out.println("Please return to the <a href=\"" +
+                        response.encodeURL("https://yk17-webapp001.herokuapp.com/") +
+                        "\">Home Page</a>.");
+                out.println("</body>\n" +
+                            "</html>");
+
     }
 
     @Override

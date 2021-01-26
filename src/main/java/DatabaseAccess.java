@@ -30,9 +30,30 @@ public class DatabaseAccess extends HttpServlet {
 
         out.println(docType +
                 "<html>\n" +
-                "<head><title>" + title + "</title></head>\n" +
+                "<head>" +
+                "<title>" + title + "</title>" +
+                "</head>\n" +
                 "<body bgcolor = \"#f0f0f0\">\n");
-        out.println("<h1 align = \"center\"> Number of meals in 'Meals' table: " + ME.listMeals() + "</h1>\n");
+        out.println("<h1 align = \"center\"> Number of meals in 'Meals' table: " + ME.countMeals() + "</h1>\n");
+        out.println("<table width = \"56%\" border = \"1\" align = \"center\">\n" +
+                "<tr bgcolor = \"#949494\">\n" +
+                "<th>m_id</th>" +
+                "<th>meal</th>\n"+
+                "<th>price</th>\n"+
+                "</tr>\n");
+        for (Object o : ME.listMeals()) {
+            Meals meal = (Meals) o;
+
+            //Display values
+            out.println("<tr><td>" + meal.getm_id() + "</td>");
+            out.println("<td>" + meal.getmeal() + "</td>");
+            out.println("<td>" + meal.getprice() + "</td>");
+        }
+
+        out.println("</tr>\n</table>\n");
+        out.println("Please return to the <a href=\"" +
+                response.encodeURL("https://yk17-webapp001.herokuapp.com/") +
+                "\">Home Page</a>.");
         out.println("</body></html>");
 
 

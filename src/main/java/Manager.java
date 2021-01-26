@@ -19,6 +19,7 @@ public class Manager extends HttpServlet {
     private String tableInitializing;
     private Meals meal;
 
+
     @Override
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
@@ -96,7 +97,7 @@ public class Manager extends HttpServlet {
         //End of HTML
         out.println("</tr>\n</table>\n");
         out.println("Please return to the <a href=\"" +
-                response.encodeURL("http://localhost:4232/webapp001_war") +
+                response.encodeURL("https://yk17-webapp001.herokuapp.com/") +
                 "\">Home Page</a>.");
         out.println("</body>");
         out.println("</html>");
@@ -167,8 +168,19 @@ public class Manager extends HttpServlet {
         session.close();
     }
 
-    public long listMeals () {
+    public List listMeals () {
 
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+
+        List meals = session.createQuery("FROM Meals").list();
+
+        session.getTransaction().commit();
+        session.close();
+        return meals;
+    }
+
+    public long countMeals () {
         long count = 0;
 
         Session session = HibernateUtil.getSessionFactory().openSession();
@@ -176,11 +188,7 @@ public class Manager extends HttpServlet {
 
         List meals = session.createQuery("FROM Meals").list();
         count = meals.size();
-//        for (Object o : meals) {
-//            Meals meal = (Meals) o;
-//            System.out.print("  Meal: " + meal.getmeal());
-//            System.out.println("  Price: " + meal.getprice());
-//        }
+
 
         session.getTransaction().commit();
         session.close();

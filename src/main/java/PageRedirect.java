@@ -12,7 +12,7 @@ public class PageRedirect extends HttpServlet {
         response.setContentType("text/html");
 
         // New location to be redirected
-        String site = new String("/SessionTrack");
+        String site = new String("https://yk17-webapp001.herokuapp.com/SessionTrack");
 
         response.setStatus(response.SC_MOVED_TEMPORARILY);
         response.setHeader("Location", site);

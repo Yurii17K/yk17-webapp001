@@ -103,7 +103,7 @@ public class UploadServlet extends HttpServlet {
                     fi.write( file ) ;
                     out.println("Uploaded Filename: " + fileName + "<br>");
                     out.println("Please return to the <a href=\"" +
-                            response.encodeURL("http://localhost:4232/webapp001_war") +
+                            response.encodeURL("https://yk17-webapp001.herokuapp.com/") +
                             "\">Home Page</a>.");
                 }
             }
