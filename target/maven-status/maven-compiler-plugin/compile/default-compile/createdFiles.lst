@@ -7,6 +7,7 @@ Main.class
 DatabaseAccess.class
 DeleteCookies.class
 PageRedirect.class
+Manager$1.class
 SessionTrack.class
 Meals.class
 ErrorHandler.class

@@ -8,16 +8,16 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.AbstractList;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "Manager", value = "/Manager")
 public class Manager extends HttpServlet {
 
     private Manager user;
-    private String tableInitializing;
-    private Meals meal;
 
 
     @Override
@@ -25,12 +25,6 @@ public class Manager extends HttpServlet {
         super.init(config);
 
         user = new Manager();
-        tableInitializing = "<table width = \"56%\" border = \"1\" align = \"center\">\n" +
-                "<tr bgcolor = \"#949494\">\n" +
-                "<th>m_id</th>" +
-                "<th>meal</th>\n"+
-                "<th>price</th>\n"+
-                "</tr>\n";
     }
 
     @Override
@@ -40,27 +34,23 @@ public class Manager extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("text/html");
-        PrintWriter out = response.getWriter();
 
-        //Start of HTML
-        out.println("<html>");
-        out.println("<head>");
-        out.println("<title>Servlet upload</title>");
-        out.println("</head>");
-        out.println("<body>");
+        Meals meal;
 
         //Updating a meal
         if (request.getParameter("meal_ID_2") != null && request.getParameter("meal_price_2") != null) {
             Integer mealID = Integer.valueOf(request.getParameter("meal_ID_2"));
             Integer mealPrice = Integer.valueOf((request.getParameter("meal_price_2")));
 
-                user.updateMeal(mealID, mealPrice);
+            user.updateMeal(mealID, mealPrice);
 
-                meal = getMealById(mealID);
+            meal = getMealById(mealID);
 
-                out.println("Meal " + mealID + " updated<br>");
-                out.println(tableInitializing);
+            HttpSession session = request.getSession();
+            session.setAttribute("meal", meal);
+            session.setAttribute("message", "Meal " + mealID + " updated.");
+
+            request.getRequestDispatcher("db_actions_display.jsp").include(request, response);
         }
 
         //Adding a meal
@@ -72,8 +62,11 @@ public class Manager extends HttpServlet {
 
             meal = getMealByName(mealName);
 
-            out.println("Meal " + mealName + " added<br>");
-            out.println(tableInitializing);
+            HttpSession session = request.getSession();
+            session.setAttribute("meal", meal);
+            session.setAttribute("message", "Meal " + mealName + " added.");
+
+            request.getRequestDispatcher("db_actions_display.jsp").include(request, response);
         }
 
         //Deleting a meal
@@ -84,23 +77,12 @@ public class Manager extends HttpServlet {
 
                 user.deleteMeal(mealID);
 
-                out.println("Meal #" + mealID + " deleted<br>");
-                out.println(tableInitializing);
+            HttpSession session = request.getSession();
+            session.setAttribute("meal", meal);
+            session.setAttribute("message", "Meal " + mealID + " deleted.");
+
+            request.getRequestDispatcher("db_actions_display.jsp").include(request, response);
         }
-
-
-        //Display values
-        out.println("<tr><td>" + meal.getm_id() + "</td>");
-        out.println("<td>" + meal.getmeal() + "</td>");
-        out.println("<td>" + meal.getprice() + "</td>");
-
-        //End of HTML
-        out.println("</tr>\n</table>\n");
-        out.println("Please return to the <a href=\"" +
-                response.encodeURL("https://yk17-webapp001.herokuapp.com/") +
-                "\">Home Page</a>.");
-        out.println("</body>");
-        out.println("</html>");
     }
 
 
@@ -168,12 +150,18 @@ public class Manager extends HttpServlet {
         session.close();
     }
 
-    public List listMeals () {
+    public List<Meals> listMeals () {
 
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
 
-        List meals = session.createQuery("FROM Meals").list();
+        List mealsObj = session.createQuery("FROM Meals").list();
+        List<Meals> meals = new ArrayList<Meals>();
+
+        for (Object o : mealsObj) {
+            Meals meal = (Meals) o;
+            meals.add(meal);
+        }
 
         session.getTransaction().commit();
         session.close();
