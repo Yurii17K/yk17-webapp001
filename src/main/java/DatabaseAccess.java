@@ -20,9 +20,9 @@ public class DatabaseAccess extends HttpServlet {
         // Set refresh, autoload time as 5 seconds
         response.setIntHeader("Refresh", 5);
 
-        HttpSession session = request.getSession();
-        session.setAttribute("mealsList", ME.listMeals());
-        session.setAttribute("mealsCount", ME.countMeals());
+        //HttpSession session = request.getSession();
+        request.setAttribute("mealsList", ME.listMeals());
+        request.setAttribute("mealsCount", ME.countMeals());
 
         request.getRequestDispatcher("endpoint_1.jsp").include(request, response);
     }
