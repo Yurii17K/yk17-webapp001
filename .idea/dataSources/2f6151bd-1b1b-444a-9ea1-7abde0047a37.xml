@@ -716,32 +716,63 @@
       <ObjectGrants>ALL PRIVILEGES|heroku_a39c2a3efdf64ed
 </ObjectGrants>
     </user>
-    <table id="224" parent="2" name="meals"/>
-    <column id="225" parent="224" name="m_id">
+    <table id="224" parent="2" name="heroes"/>
+    <table id="225" parent="2" name="meals"/>
+    <column id="226" parent="224" name="h_id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="226" parent="224" name="meal">
+    <column id="227" parent="224" name="hero">
       <Position>2</Position>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="227" parent="224" name="effect">
+    <column id="228" parent="224" name="delicacy">
       <Position>3</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="228" parent="224" name="duration">
+    <index id="229" parent="224" name="delicacy">
+      <ColNames>delicacy</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="230" parent="224" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>h_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="231" parent="224" name="heroes_ibfk_1">
+      <ColNames>delicacy</ColNames>
+      <RefTableName>meals</RefTableName>
+      <RefColNames>m_id</RefColNames>
+    </foreign-key>
+    <column id="232" parent="225" name="m_id">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
+    </column>
+    <column id="233" parent="225" name="meal">
+      <Position>2</Position>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="234" parent="225" name="effect">
+      <Position>3</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="235" parent="225" name="duration">
       <Position>4</Position>
       <DataType>int(11)|0s</DataType>
     </column>
-    <column id="229" parent="224" name="price">
+    <column id="236" parent="225" name="price">
       <Position>5</Position>
       <DataType>int(11)|0s</DataType>
     </column>
-    <key id="230" parent="224" name="PRIMARY">
+    <key id="237" parent="225" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>m_id</ColNames>
       <Primary>1</Primary>

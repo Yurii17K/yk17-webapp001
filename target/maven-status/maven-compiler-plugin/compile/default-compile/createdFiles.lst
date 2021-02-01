@@ -2,6 +2,7 @@ ReadCookies.class
 LogFilter.class
 HibernateUtil.class
 UploadServlet.class
+Heroes.class
 Manager.class
 Main.class
 DatabaseAccess.class

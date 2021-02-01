@@ -30,6 +30,7 @@
         <property name="cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</property>
 
         <mapping class="Meals"/>
+        <mapping class="Heroes"/>
 
     </session-factory>
 </hibernate-configuration>

@@ -2,6 +2,7 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -127,7 +128,10 @@ public class Manager extends HttpServlet {
     }
 
     public void deleteMeal (Integer mealID) {
-        //if (mealID <= user.listMeals() && mealID > 0) {
+        List<Integer> check = check();
+
+        if (!check.contains(mealID)) {
+//if (mealID <= user.listMeals() && mealID > 0) {
             Session session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
 
@@ -136,7 +140,9 @@ public class Manager extends HttpServlet {
 
             session.getTransaction().commit();
             session.close();
-       // }
+            // }
+        }
+
     }
 
     public void addMeal (String mealName, int mealPrice){
@@ -167,6 +173,25 @@ public class Manager extends HttpServlet {
         session.getTransaction().commit();
         session.close();
         return meals;
+    }
+
+    public List<Integer> check () {
+
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+
+        List heroesObj = session.createQuery("FROM Heroes").list();
+        List<Integer> heroes = new ArrayList<Integer>();
+
+        for (Object o : heroesObj) {
+            Heroes hero = (Heroes) o;
+            heroes.add(hero.getH_id());
+        }
+
+        session.getTransaction().commit();
+        session.close();
+
+        return heroes;
     }
 
     public long countMeals () {
