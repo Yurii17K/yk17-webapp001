@@ -50,7 +50,7 @@ public class Manager extends HttpServlet {
             session.setAttribute("meal", meal);
             session.setAttribute("message", "Meal " + mealID + " updated.");
 
-            request.getRequestDispatcher("db_actions_display.jsp").include(request, response);
+            request.getRequestDispatcher("db_actions.jsp").include(request, response);
         }
 
         //Adding a meal
@@ -73,9 +73,9 @@ public class Manager extends HttpServlet {
         if (request.getParameter("meal_ID") != null) {
             Integer mealID = Integer.valueOf(request.getParameter("meal_ID"));
 
-                meal = getMealById(mealID);
+            meal = getMealById(mealID);
 
-                user.deleteMeal(mealID);
+            user.deleteMeal(mealID);
 
             HttpSession session = request.getSession();
             session.setAttribute("meal", meal);
@@ -84,6 +84,7 @@ public class Manager extends HttpServlet {
             request.getRequestDispatcher("db_actions_display.jsp").include(request, response);
         }
     }
+
 
 
     //Methods

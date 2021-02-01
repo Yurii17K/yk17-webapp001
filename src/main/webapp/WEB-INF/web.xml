@@ -4,19 +4,8 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
 
-    <jsp-config>
-        <jsp-property-group>
-            <url-pattern>*.jsp</url-pattern>
-            <scripting-invalid>true</scripting-invalid>
-        </jsp-property-group>
-    </jsp-config>
-
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
-        <welcome-file>file_upload.jsp</welcome-file>
-        <welcome-file>db_actions.jsp</welcome-file>
-        <welcome-file>display_meals.jsp</welcome-file>
-        <welcome-file>endpoint#1.jsp</welcome-file>
     </welcome-file-list>
 
 <!--    Servlets-->

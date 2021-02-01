@@ -30,6 +30,14 @@
 <!--            <scope>provided</scope>-->
 <!--        </dependency>-->
 
+        <!-- https://mvnrepository.com/artifact/org.kohsuke/github-api -->
+        <dependency>
+            <groupId>org.kohsuke</groupId>
+            <artifactId>github-api</artifactId>
+            <version>1.122</version>
+        </dependency>
+
+
         <!-- https://mvnrepository.com/artifact/javax.servlet/jstl -->
         <dependency>
             <groupId>javax.servlet</groupId>

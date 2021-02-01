@@ -9,10 +9,26 @@
 <html>
 <head>
     <title>SessionTrack</title>
+    <link rel="stylesheet" type="text/css" href="index.css">
 </head>
 <body>
+
+<div class="navigation">
+    <ul>
+        <li><a href="file_upload.jsp">FileUpload</a></li>
+        <li><a href="auth.jsp">DBActions</a></li>
+
+        <li><a href="${pageContext.request.contextPath}/DatabaseAccess">DatabaseAccess</a></li>
+        <li><a href="${pageContext.request.contextPath}/SessionTrack">SessionTrack</a></li>
+        <li><a href="${pageContext.request.contextPath}/Cookies">Cookies</a></li>
+        <li><a href="${pageContext.request.contextPath}/ReadCookies">ReadCookies</a></li>
+        <li><a href="${pageContext.request.contextPath}/DeleteCookies">DeleteCookies</a></li>
+        <li><a href="${pageContext.request.contextPath}/PageRedirect">PageRedirect</a></li>
+    </ul>
+</div>
+
 <h1 align = "center">SessionTrack</h1>
-<h2 align = "center">Session Infomation</h2>
+<h2 align = "center">${title}</h2>
 <table border = 1 align = "center">
 
     <tr bgcolor = #949494> 

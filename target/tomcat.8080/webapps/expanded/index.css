@@ -3,7 +3,7 @@ body {
     padding: 0px;
 }
 
-.navigation {
+.navigation, .navigation1 {
     /*float: left;*/
     /* margin-left: 40px;*/
     border: black;
@@ -12,7 +12,7 @@ body {
 
 }
 
-.file, .forms{
+.file, .forms, .forms1{
     margin: auto;
     width: 50%;
 }

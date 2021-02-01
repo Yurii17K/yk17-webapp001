@@ -14,6 +14,11 @@
           <element id="module-output" name="webapp001" />
         </element>
         <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: org.kohsuke:github-api:1.122" />
+          <element id="library" level="project" name="Maven: org.apache.commons:commons-lang3:3.9" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.10.2" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-core:2.10.2" />
+          <element id="library" level="project" name="Maven: commons-io:commons-io:2.4" />
           <element id="library" level="project" name="Maven: javax.servlet:jstl:1.2" />
           <element id="library" level="project" name="Maven: org.hibernate:hibernate-core:5.4.27.Final" />
           <element id="library" level="project" name="Maven: org.jboss.logging:jboss-logging:3.4.1.Final" />
@@ -37,7 +42,6 @@
           <element id="library" level="project" name="Maven: net.sf.ehcache:ehcache:2.10.6" />
           <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.25" />
           <element id="library" level="project" name="Maven: commons-fileupload:commons-fileupload:1.4" />
-          <element id="library" level="project" name="Maven: commons-io:commons-io:2.2" />
           <element id="library" level="project" name="Maven: mysql:mysql-connector-java:8.0.18" />
           <element id="library" level="project" name="Maven: com.google.protobuf:protobuf-java:3.6.1" />
           <element id="library" level="project" name="Maven: com.microsoft.sqlserver:mssql-jdbc:7.0.0.jre8" />

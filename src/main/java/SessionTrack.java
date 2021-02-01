@@ -41,6 +41,9 @@ public class SessionTrack extends HttpServlet {
             visitCount = visitCount + 1;
             userID = (Integer) session.getAttribute(userIDKey);
         }
+
+        session.setAttribute("title", title);
+        //session.setAttribute(userIDKey, userID);
         session.setAttribute(visitCountKey,  visitCount);
         session.setAttribute("sessionID", session.getId());
         session.setAttribute("creationTime", createTime);

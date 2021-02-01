@@ -5,6 +5,7 @@ UploadServlet.class
 Manager.class
 Main.class
 DatabaseAccess.class
+Auth.class
 DeleteCookies.class
 PageRedirect.class
 SessionTrack.class

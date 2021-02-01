@@ -10,8 +10,8 @@
 
 <div class="navigation">
     <ul>
-        <li><a href="file_upoad.jsp">FileUpload</a></li>
-        <li><a href="db_actions.jsp">DBActions</a></li>
+        <li><a href="file_upload.jsp">FileUpload</a></li>
+        <li><a href="auth.jsp">DBActions</a></li>
 
         <li><a href="${pageContext.request.contextPath}/DatabaseAccess">DatabaseAccess</a></li>
         <li><a href="${pageContext.request.contextPath}/SessionTrack">SessionTrack</a></li>
@@ -21,10 +21,6 @@
         <li><a href="${pageContext.request.contextPath}/PageRedirect">PageRedirect</a></li>
     </ul>
 </div>
-
-
-
-
 
 </body>
 </html>
