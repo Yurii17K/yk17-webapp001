@@ -51,7 +51,7 @@ public class Manager extends HttpServlet {
             session.setAttribute("meal", meal);
             session.setAttribute("message", "Meal " + mealID + " updated.");
 
-            request.getRequestDispatcher("db_actions.jsp").include(request, response);
+            request.getRequestDispatcher("db_actions_display.jsp").include(request, response);
         }
 
         //Adding a meal
@@ -128,10 +128,7 @@ public class Manager extends HttpServlet {
     }
 
     public void deleteMeal (Integer mealID) {
-        List<Integer> check = check();
 
-        if (!check.contains(mealID)) {
-//if (mealID <= user.listMeals() && mealID > 0) {
             Session session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
 
@@ -140,9 +137,6 @@ public class Manager extends HttpServlet {
 
             session.getTransaction().commit();
             session.close();
-            // }
-        }
-
     }
 
     public void addMeal (String mealName, int mealPrice){
@@ -175,7 +169,7 @@ public class Manager extends HttpServlet {
         return meals;
     }
 
-    public List<Integer> check () {
+    public List<Integer> checkFKs () {
 
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();

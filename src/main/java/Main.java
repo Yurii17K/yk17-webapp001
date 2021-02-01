@@ -1,22 +1,15 @@
 
 
-import org.kohsuke.github.GitHub;
-import org.kohsuke.github.GitHubBuilder;
-
 import java.io.IOException;
 
 public class Main {
 
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
 
+        Manager m1 = new Manager();
 
-
-        }
-//        Manager EM = new Manager();
-//
-//        EM.listMeals();
-
-
+        System.out.println(m1.checkFKs());
     }
+}
 
