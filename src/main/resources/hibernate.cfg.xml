@@ -12,8 +12,6 @@
             com.mysql.cj.jdbc.Driver
         </property>
 
-        <!-- Assume test is the database name -->
-
         <property name = "hibernate.connection.url">
             jdbc:mysql://eu-cdbr-west-03.cleardb.net/heroku_a39c2a3efdf64ed
         </property>

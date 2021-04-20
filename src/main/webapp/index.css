@@ -56,3 +56,7 @@ li a:hover {
     background-color: whitesmoke;
 }
 
+#form1 {
+    display: none;
+}
+

@@ -19,7 +19,15 @@ public class Meals {
 
 
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(
+            name = "student_seq",
+            sequenceName = "student_seq",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "student_seq"
+    )
     @Column(name = "m_id")
     private int m_id;
 

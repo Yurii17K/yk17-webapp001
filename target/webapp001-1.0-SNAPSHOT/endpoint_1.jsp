@@ -28,6 +28,12 @@
     </ul>
 </div>
 
+
+<form id="form1" name="form1" action = "DatabaseAccess" method = "GET">
+    <input type ="submit" value = "get data">
+</form>
+
+
 <p>Number of elements in the Meals table: ${mealsCount}</p>
 
 <table width = "56%" border = "1" align = "center">
