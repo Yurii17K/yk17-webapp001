@@ -1,3 +1,4 @@
 # webapp001
- Web app with mysql clearDB, deployed with heroku.
+ ## Java Web App
+ Servlets, jsp, mysql clearDB, heroku. 
  https://yk17-webapp001.herokuapp.com/
