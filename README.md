@@ -3,9 +3,11 @@
  
  Servlets, JSP, MySQL, ClearDB
  
- Caching of tables enabled
  
- Authentication using Git Tokens
+ Additional features:
+ - Caching of tables enabled
+ - Authentication using Git Tokens
+ 
  
  Deployed to Heroku:
  https://yk17-webapp001.herokuapp.com/
